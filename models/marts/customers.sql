@@ -23,8 +23,8 @@ customer_orders_summary as (
         max(orders.order_date) as last_order_date,
         sum(orders.subtotal) as lifetime_spend_pretax,
         sum(orders.tax_paid) as lifetime_tax_paid,
-        sum(orders.order_total) as lifetime_spend
-
+        sum(orders.order_total) as lifetime_spend,
+        
     from orders
 
     group by 1
@@ -46,7 +46,12 @@ joined as (
         case
             when customer_orders_summary.is_repeat_buyer then 'returning'
             else 'new'
-        end as customer_type
+        end as customer_type,
+
+        case 
+            when customer_orders_summary.count_lifetime_orders <5  then 'low'
+            else 'high'
+        end as customer_order_amount_category
 
     from customers
 

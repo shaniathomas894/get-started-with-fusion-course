@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    database: raw
+    schema: jaffle_shop
+    tables:
+      - name: customer_web_activity
+      - name: customers
+      - name: customers_test
+      - name: order_items
+      - name: orders
+      - name: orders_view
+      - name: products
