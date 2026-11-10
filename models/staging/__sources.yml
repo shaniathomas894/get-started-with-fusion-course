@@ -1,23 +1,24 @@
 version: 2
 
-# Try using these source definitions instead!
 sources:
-  - name: ecom
-    schema: "{{ target.schema }}_raw"
-    description: E-commerce data for the Jaffle Shop
+  - name: jaffle_shop
+    database: raw
+    schema: new_jaffle_shop
+    description: Warehouse-backed Jaffle Shop e-commerce data replacing the local CSV seeds.
     tables:
-      - name: raw_customers
-        description: One record per person who has purchased one or more items
-      - name: raw_orders
-        description: One record per order (consisting of one or more order items)
+      - name: customers
+        description: One record per customer.
+      - name: orders
+        description: One record per order (consisting of one or more order items).
         config:
           loaded_at_field: ordered_at
-      - name: raw_items
-        description: Items included in an order
-      - name: raw_stores
+      - name: items
+        description: Items included in an order, one record per order item.
+      - name: stores
+        description: One record per store.
         config:
           loaded_at_field: opened_at
-      - name: raw_products
-        description: One record per SKU for items sold in stores
-      - name: raw_supplies
-        description: One record per supply per SKU of items sold in stores
+      - name: products
+        description: One record per SKU for items sold in stores.
+      - name: supplies
+        description: One record per supply per SKU of items sold in stores.

@@ -10,9 +10,11 @@ clean-targets:
   - "dbt_packages"
 
 seeds:
-  # Builds seeds into '<your_schema_name>_raw'
+  # Keep the CSVs for reference; warehouse sources now feed the models.
   jaffle_shop_17:
+    +enabled: false
     +schema: raw
+
 
 models:
   jaffle_shop_17:
